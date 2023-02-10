@@ -6,28 +6,28 @@ void main() {
   group('BudgetCalculator', () {
     final transactions = [
       Transaction(
-        id: 1,
+        id: '1',
         type: TransactionType.expense,
         amount: 100,
         date: DateTime(2022, 1, 1),
         category: 'Food',
       ),
       Transaction(
-        id: 2,
+        id: '2',
         type: TransactionType.expense,
         amount: 200,
         date: DateTime(2022, 2, 1),
         category: 'Entertainment',
       ),
       Transaction(
-        id: 3,
+        id: '3',
         type: TransactionType.income,
         amount: 500,
         date: DateTime(2022, 3, 1),
         category: 'Salary',
       ),
       Transaction(
-        id: 4,
+        id: '4',
         type: TransactionType.income,
         amount: 300,
         date: DateTime(2022, 4, 1),

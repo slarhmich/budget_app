@@ -4,7 +4,7 @@ enum TransactionType {
 }
 
 class Transaction {
-  int id;
+  String id;
   TransactionType type;
   double amount;
   DateTime date;
