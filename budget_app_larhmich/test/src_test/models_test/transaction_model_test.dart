@@ -1,82 +1,79 @@
 import 'package:budget_app_larhmich/src/models/transaction_model.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Transaction', () {
-    test('should be able to create an instance from JSON', () {
-      final Map<String, dynamic> json = {
-        'id': 'transaction_1',
-        'type': 'expense',
+    test('fromJson correctly converts JSON to Transaction instance', () {
+      final json = {
+        'id': '1',
+        'type': 0,
         'amount': 100.0,
         'date': '2022-01-01T00:00:00.000',
-        'category': 'shopping',
+        'category': 'Salary',
       };
-
       final transaction = Transaction.fromJson(json);
 
-      expect(transaction.id, 'transaction_1');
-      expect(transaction.type, 'expense');
+      expect(transaction.id, '1');
+      expect(transaction.type, TransactionType.income);
       expect(transaction.amount, 100.0);
-      expect(transaction.date, DateTime(2022, 01, 01));
-      expect(transaction.category, 'shopping');
+      expect(transaction.date, DateTime.parse('2022-01-01T00:00:00.000'));
+      expect(transaction.category, 'Salary');
     });
 
-    test('should be able to convert to JSON', () {
+    test('toJson correctly converts Transaction instance to JSON', () {
       final transaction = Transaction(
-        id: 'transaction_1',
-        type: 'expense',
+        id: '1',
+        type: TransactionType.income,
         amount: 100.0,
-        date: DateTime(2022, 01, 01),
-        category: 'shopping',
+        date: DateTime.parse('2022-01-01T00:00:00.000'),
+        category: 'Salary',
       );
+      final json = transaction.toJson();
 
-      final Map<String, dynamic> json = transaction.toJson();
-
-      expect(json, {
-        'id': 'transaction_1',
-        'type': 'expense',
-        'amount': 100.0,
-        'date': '2022-01-01T00:00:00.000',
-        'category': 'shopping',
-      });
+      expect(json['id'], '1');
+      expect(json['type'], 0);
+      expect(json['amount'], 100.0);
+      expect(json['date'], '2022-01-01T00:00:00.000');
+      expect(json['category'], 'Salary');
     });
 
-    test('should be equal if all attributes are the same', () {
+    test('== returns true when two transactions have the same properties', () {
       final transaction1 = Transaction(
-        id: 'transaction_1',
-        type: 'expense',
+        id: '1',
+        type: TransactionType.income,
         amount: 100.0,
-        date: DateTime(2022, 01, 01),
-        category: 'shopping',
+        date: DateTime.parse('2022-01-01T00:00:00.000'),
+        category: 'Salary',
       );
       final transaction2 = Transaction(
-        id: 'transaction_1',
-        type: 'expense',
+        id: '1',
+        type: TransactionType.income,
         amount: 100.0,
-        date: DateTime(2022, 01, 01),
-        category: 'shopping',
+        date: DateTime.parse('2022-01-01T00:00:00.000'),
+        category: 'Salary',
       );
 
-      expect(transaction1, transaction2);
+      expect(transaction1 == transaction2, true);
     });
 
-    test('should not be equal if attributes are different', () {
+    test('== returns false when two transactions have different properties',
+        () {
       final transaction1 = Transaction(
-        id: 'transaction_1',
-        type: 'expense',
+        id: '1',
+        type: TransactionType.income,
         amount: 100.0,
-        date: DateTime(2022, 01, 01),
-        category: 'shopping',
+        date: DateTime.parse('2022-01-01T00:00:00.000'),
+        category: 'Salary',
       );
       final transaction2 = Transaction(
-        id: 'transaction_2',
-        type: 'expense',
-        amount: 200.0,
-        date: DateTime(2022, 01, 02),
-        category: 'entertainment',
+        id: '2',
+        type: TransactionType.income,
+        amount: 100.0,
+        date: DateTime.parse('2022-01-01T00:00:00.000'),
+        category: 'Salary',
       );
 
-      expect(transaction1, isNot(transaction2));
+      expect(transaction1 == transaction2, false);
     });
   });
 }

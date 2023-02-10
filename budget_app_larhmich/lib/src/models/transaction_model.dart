@@ -1,6 +1,11 @@
+enum TransactionType {
+  income,
+  expense,
+}
+
 class Transaction {
   String id;
-  String type;
+  TransactionType type;
   double amount;
   DateTime date;
   String category;
@@ -16,7 +21,7 @@ class Transaction {
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       id: json['id'],
-      type: json['type'],
+      type: TransactionType.values[json['type']],
       amount: json['amount'],
       date: DateTime.parse(json['date']),
       category: json['category'],
@@ -26,7 +31,7 @@ class Transaction {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['type'] = type;
+    data['type'] = type.index;
     data['amount'] = amount;
     data['date'] = date.toIso8601String();
     data['category'] = category;
