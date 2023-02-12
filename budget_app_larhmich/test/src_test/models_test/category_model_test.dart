@@ -9,13 +9,11 @@ void main() {
       final Map<String, dynamic> json = {
         'id': '1',
         'name': 'Shopping',
-        'budget': 500,
         'color': Colors.amber,
       };
       final category = CategoryModel.fromJson(json);
       expect(category.id, '1');
       expect(category.name, 'Shopping');
-      expect(category.budget, 500);
       expect(category.color, Colors.amber);
     });
 
@@ -23,13 +21,11 @@ void main() {
       final category = CategoryModel(
         id: '1',
         name: 'Shopping',
-        budget: 500,
         color: Colors.amber,
       );
       final Map<String, dynamic> json = category.toJson();
       expect(json['id'], '1');
       expect(json['name'], 'Shopping');
-      expect(json['budget'], 500);
       expect(category.color, Colors.amber);
     });
   });
@@ -37,13 +33,11 @@ void main() {
   test('create instance without id', () {
     final category = CategoryModel(
       name: 'Shopping',
-      budget: 500,
       color: Colors.amber,
     );
     final Map<String, dynamic> jsson = category.toJson();
     expect(jsson['id'], isNull);
     expect(jsson['name'], 'Shopping');
-    expect(jsson['budget'], 500);
     expect(category.color, Colors.amber);
   });
 }
