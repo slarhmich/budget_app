@@ -6,7 +6,10 @@ class CategoryModel {
   String? id;
   String name;
   int budget;
-  Color color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+  Color color;
+
+  Color get getColor =>
+      Colors.primaries[Random().nextInt(Colors.primaries.length)];
 
   CategoryModel(
       {this.id, required this.name, required this.budget, required this.color});
