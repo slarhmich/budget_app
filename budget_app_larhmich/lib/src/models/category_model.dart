@@ -1,11 +1,7 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-
 class CategoryModel {
   String? id;
   String name;
-  Color color;
+  final color;
 
   CategoryModel({
     this.id,

@@ -1,4 +1,4 @@
-class Month {
+class MonthModel {
   final String id;
   final String name;
   final int year;
@@ -8,7 +8,7 @@ class Month {
   final double totalIncome;
   final double total;
 
-  Month({
+  MonthModel({
     required this.id,
     required this.name,
     required this.year,
@@ -19,12 +19,12 @@ class Month {
     required this.total,
   });
 
-  factory Month.fromJson(Map<String, dynamic> json) {
+  factory MonthModel.fromJson(Map<String, dynamic> json) {
     final expenses = (json['expenses'] as Map<String, double>)
         .map((key, value) => MapEntry(key, value.toDouble()));
     final income = (json['income'] as Map<String, double>)
         .map((key, value) => MapEntry(key, value.toDouble()));
-    return Month(
+    return MonthModel(
       id: json['id'],
       name: json['name'],
       year: json['year'],
