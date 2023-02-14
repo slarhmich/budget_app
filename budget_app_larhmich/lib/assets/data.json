@@ -1,0 +1,123 @@
+[
+  {
+    "id": "2021-01",
+    "name": "January",
+    "year": 2021,
+    "expenses": {
+      "Food": 100.0,
+      "Transportation": 200.0,
+      "Entertainment": 300.0,
+      "Groceries": 400.0,
+      "Other": 500.0
+    },
+    "income": {
+      "Salary": 1000.0,
+      "Bonus": 2000.0,
+      "Other": 3000.0
+    },
+    "totalExpenses": 1500.0,
+    "totalIncome": 6000.0,
+    "total": 4500.0
+  },
+  {
+    "id": "2021-02",
+    "name": "February",
+    "year": 2021,
+    "expenses": {
+      "Food": 150.0,
+      "Transportation": 250.0,
+      "Entertainment": 350.0,
+      "Groceries": 450.0,
+      "Other": 550.0
+    },
+    "income": {
+      "Salary": 1200.0,
+      "Bonus": 2200.0,
+      "Other": 3200.0
+    },
+    "totalExpenses": 1750.0,
+    "totalIncome": 6600.0,
+    "total": 4850.0
+  },
+  {
+    "id": "2021-03",
+    "name": "March",
+    "year": 2021,
+    "expenses": {
+      "Food": 200.0,
+      "Transportation": 300.0,
+      "Entertainment": 400.0,
+      "Groceries": 500.0,
+      "Other": 600.0
+    },
+    "income": {
+      "Salary": 1500.0,
+      "Bonus": 2500.0,
+      "Other": 3500.0
+    },
+    "totalExpenses": 2000.0,
+    "totalIncome": 7500.0,
+    "total": 5500.0
+  },
+  {
+    "id": "2021-04",
+    "name": "April",
+    "year": 2021,
+    "expenses": {
+      "Food": 250.0,
+      "Transportation": 350.0,
+      "Entertainment": 450.0,
+      "Groceries": 550.0,
+      "Other": 650.0
+    },
+    "income": {
+      "Salary": 1800.0,
+      "Bonus": 2800.0,
+      "Other": 3800.0
+    },
+    "totalExpenses": 2250.0,
+    "totalIncome": 8400.0,
+    "total": 6150.0
+  },
+  {
+    "id": "2021-05",
+    "name": "May",
+    "year": 2021,
+    "expenses": {
+      "Food": 300.0,
+      "Transportation": 400.0,
+      "Entertainment": 500.0,
+      "Groceries": 600.0,
+      "Other": 700.0
+    },
+    "income": {
+      "Salary": 2000.0,
+      "Bonus": 3000.0,
+      "Other": 4000.0
+    },
+    "totalExpenses": 2500.0,
+    "totalIncome": 8400.0,
+    "total": 6150.0
+  },
+  {
+    "id": "2022-01",
+    "name": "Jan",
+    "year": 2021,
+    "expenses": {
+      "Food": 300.0,
+      "Transportation": 400.0,
+      "Entertainment": 500.0,
+      "Groceries": 600.0,
+      "Other": 700.0
+    },
+    "income": {
+      "Salary": 2000.0,
+      "Bonus": 3000.0,
+      "Other": 4000.0
+    },
+    "totalExpenses": 2500.0,
+    "totalIncome": 8400.0,
+    "total": 6150.0
+  }
+
+]

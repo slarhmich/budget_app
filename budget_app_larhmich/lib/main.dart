@@ -1,21 +1,22 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'src/widgets/month_summary.dart';
+import 'src/screens/previous_data_screen.dart';
+import 'src/widgets/legend.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return const MaterialApp(
+      title: 'Month List Demo',
+      home: Legend(
+        categories: [],
       ),
-      home: Scaffold(body: Month()),
     );
   }
 }

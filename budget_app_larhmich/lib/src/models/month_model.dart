@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 class MonthModel {
   final String id;
   final String name;
@@ -20,10 +24,10 @@ class MonthModel {
   });
 
   factory MonthModel.fromJson(Map<String, dynamic> json) {
-    final expenses = (json['expenses'] as Map<String, double>)
-        .map((key, value) => MapEntry(key, value.toDouble()));
-    final income = (json['income'] as Map<String, double>)
-        .map((key, value) => MapEntry(key, value.toDouble()));
+    final expenses = (json['expenses'] as Map<String, dynamic>)
+        .map((key, value) => MapEntry(key, double.parse(value.toString())));
+    final income = (json['income'] as Map<String, dynamic>)
+        .map((key, value) => MapEntry(key, double.parse(value.toString())));
     return MonthModel(
       id: json['id'],
       name: json['name'],
@@ -47,5 +51,11 @@ class MonthModel {
       'totalIncome': totalIncome,
       'total': total,
     };
+  }
+
+  static Future<List<MonthModel>> loadFromJsonFile(String filePath) async {
+    final String data = await rootBundle.loadString(filePath);
+    final jsonData = json.decode(data) as List<dynamic>;
+    return jsonData.map((monthData) => MonthModel.fromJson(monthData)).toList();
   }
 }

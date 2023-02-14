@@ -3,8 +3,11 @@ class FeedbackModel {
   String message;
   DateTime createdAt;
 
-  FeedbackModel(
-      {required this.id, required this.message, required this.createdAt});
+  FeedbackModel({
+    required this.id,
+    required this.message,
+    required this.createdAt,
+  });
 
   factory FeedbackModel.fromJson(Map<String, dynamic> json) {
     return FeedbackModel(

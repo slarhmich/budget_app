@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
 import '../models/month_model.dart';
 
-Map<String, dynamic> data = {
-  "id": "2021-01",
-  "name": "January",
-  "year": 2021,
-  "expenses": {
-    "Food": 100.0,
-    "Transportation": 200.0,
-    "Entertainment": 300.0,
-    "Groceries": 400.0,
-    "Other": 500.0,
-  },
-  "income": {
-    "Salary": 1000.0,
-    "Bonus": 2000.0,
-    "Other": 3000.0,
-  },
-  "totalExpenses": 1500.0,
-  "totalIncome": 6000.0,
-  "total": 4500.0,
-};
+class MonthList extends StatelessWidget {
+  final List<MonthModel> months;
+
+  const MonthList({Key? key, required this.months}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: months.length,
+      itemBuilder: (context, index) {
+        return Month(month: months[index]);
+      },
+    );
+  }
+}
 
 class Month extends StatelessWidget {
-  final MonthModel month = MonthModel.fromJson(data);
+  final MonthModel month;
   final bool isExpanded;
 
-  Month({
+  const Month({
     Key? key,
+    required this.month,
     this.isExpanded = false,
   }) : super(key: key);
 
