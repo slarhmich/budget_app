@@ -11,7 +11,7 @@ void main() {
         'date': '2022-01-01T00:00:00.000',
         'category': 'Salary',
       };
-      final transaction = Transaction.fromJson(json);
+      final transaction = TransactionModel.fromJson(json);
 
       expect(transaction.id, '1');
       expect(transaction.type, TransactionType.income);
@@ -21,7 +21,7 @@ void main() {
     });
 
     test('toJson correctly converts Transaction instance to JSON', () {
-      final transaction = Transaction(
+      final transaction = TransactionModel(
         id: '1',
         type: TransactionType.income,
         amount: 100.0,
@@ -38,14 +38,14 @@ void main() {
     });
 
     test('== returns true when two transactions have the same properties', () {
-      final transaction1 = Transaction(
+      final transaction1 = TransactionModel(
         id: '1',
         type: TransactionType.income,
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
       );
-      final transaction2 = Transaction(
+      final transaction2 = TransactionModel(
         id: '1',
         type: TransactionType.income,
         amount: 100.0,
@@ -58,14 +58,14 @@ void main() {
 
     test('== returns false when two transactions have different properties',
         () {
-      final transaction1 = Transaction(
+      final transaction1 = TransactionModel(
         id: '1',
         type: TransactionType.income,
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
       );
-      final transaction2 = Transaction(
+      final transaction2 = TransactionModel(
         id: '2',
         type: TransactionType.income,
         amount: 100.0,

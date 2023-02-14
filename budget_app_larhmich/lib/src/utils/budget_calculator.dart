@@ -1,7 +1,7 @@
 import '../models/transaction_model.dart';
 
 class BudgetCalculator {
-  final List<Transaction> transactions;
+  final List<TransactionModel> transactions;
 
   BudgetCalculator({required this.transactions});
 

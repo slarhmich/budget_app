@@ -5,28 +5,28 @@ import 'package:test/test.dart';
 void main() {
   group('BudgetCalculator', () {
     final transactions = [
-      Transaction(
+      TransactionModel(
         id: '1',
         type: TransactionType.expense,
         amount: 100,
         date: DateTime(2022, 1, 1),
         category: 'Food',
       ),
-      Transaction(
+      TransactionModel(
         id: '2',
         type: TransactionType.expense,
         amount: 200,
         date: DateTime(2022, 2, 1),
         category: 'Entertainment',
       ),
-      Transaction(
+      TransactionModel(
         id: '3',
         type: TransactionType.income,
         amount: 500,
         date: DateTime(2022, 3, 1),
         category: 'Salary',
       ),
-      Transaction(
+      TransactionModel(
         id: '4',
         type: TransactionType.income,
         amount: 300,

@@ -3,14 +3,14 @@ enum TransactionType {
   expense,
 }
 
-class Transaction {
+class TransactionModel {
   String id;
   TransactionType type;
   double amount;
   DateTime date;
   String category;
 
-  Transaction({
+  TransactionModel({
     required this.id,
     required this.type,
     required this.amount,
@@ -18,8 +18,8 @@ class Transaction {
     required this.category,
   });
 
-  factory Transaction.fromJson(Map<String, dynamic> json) {
-    return Transaction(
+  factory TransactionModel.fromJson(Map<String, dynamic> json) {
+    return TransactionModel(
       id: json['id'],
       type: TransactionType.values[json['type']],
       amount: json['amount'],
@@ -42,7 +42,7 @@ class Transaction {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other.runtimeType != runtimeType) return false;
-    final Transaction otherTransaction = other as Transaction;
+    final TransactionModel otherTransaction = other as TransactionModel;
     return id == otherTransaction.id &&
         type == otherTransaction.type &&
         amount == otherTransaction.amount &&
