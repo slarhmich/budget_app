@@ -44,24 +44,6 @@ class TransactionModel extends Equatable {
     return data;
   }
 
-  TransactionModel copyWith({
-    String? id,
-    String? name,
-    TransactionType? type,
-    double? amount,
-    DateTime? date,
-    String? category,
-  }) {
-    return TransactionModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      type: type ?? this.type,
-      amount: amount ?? this.amount,
-      date: date ?? this.date,
-      category: category ?? this.category,
-    );
-  }
-
   @override
   List<Object> get props => [id, type, amount, date, category, name];
 }
