@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'src/widgets/total_amount.dart';
+import 'src/widgets/transaction_list.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Month List Demo',
         home: Scaffold(
-          body: TotalAmount(
-            income: 300.0,
-            expenses: 500.0,
-          ),
+          body: TransactionList([]),
         ));
   }
 }
