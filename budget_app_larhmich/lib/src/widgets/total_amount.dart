@@ -13,15 +13,15 @@ class TotalAmount extends StatelessWidget {
     final isNegative = difference < 0;
 
     final status = isNegative ? '-' : '';
-    final differenceText = {difference.abs().toStringAsFixed(2)};
+    final differenceText = difference.abs().toStringAsFixed(2);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      textDirection: TextDirection.ltr,
       children: [
         Text(
           textAlign: TextAlign.center,
-          'status \n $status$differenceText',
+          textDirection: TextDirection.ltr,
+          '$status$differenceText',
           style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w300,

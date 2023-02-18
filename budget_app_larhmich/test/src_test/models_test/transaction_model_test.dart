@@ -5,6 +5,7 @@ void main() {
   group('Transaction', () {
     test('fromJson correctly converts JSON to Transaction instance', () {
       final json = {
+        'name': 'Salary',
         'id': '1',
         'type': 0,
         'amount': 100.0,
@@ -14,6 +15,7 @@ void main() {
       final transaction = TransactionModel.fromJson(json);
 
       expect(transaction.id, '1');
+      expect(transaction.name, 'Salary');
       expect(transaction.type, TransactionType.income);
       expect(transaction.amount, 100.0);
       expect(transaction.date, DateTime.parse('2022-01-01T00:00:00.000'));
@@ -27,6 +29,7 @@ void main() {
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
+        name: '',
       );
       final json = transaction.toJson();
 
@@ -44,6 +47,7 @@ void main() {
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
+        name: 'Salary',
       );
       final transaction2 = TransactionModel(
         id: '1',
@@ -51,6 +55,7 @@ void main() {
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
+        name: 'Salary',
       );
 
       expect(transaction1 == transaction2, true);
@@ -64,6 +69,7 @@ void main() {
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
+        name: '',
       );
       final transaction2 = TransactionModel(
         id: '2',
@@ -71,6 +77,7 @@ void main() {
         amount: 100.0,
         date: DateTime.parse('2022-01-01T00:00:00.000'),
         category: 'Salary',
+        name: '',
       );
 
       expect(transaction1 == transaction2, false);

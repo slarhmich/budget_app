@@ -7,7 +7,7 @@ class PreviousMonthsView extends StatefulWidget {
   const PreviousMonthsView({Key? key}) : super(key: key);
 
   @override
-  _PreviousMonthsViewState createState() => _PreviousMonthsViewState();
+  State createState() => _PreviousMonthsViewState();
 }
 
 class _PreviousMonthsViewState extends State<PreviousMonthsView> {

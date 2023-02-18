@@ -6,6 +6,7 @@ void main() {
   group('BudgetCalculator', () {
     final transactions = [
       TransactionModel(
+        name: 'Potatoes',
         id: '1',
         type: TransactionType.expense,
         amount: 100,
@@ -18,6 +19,7 @@ void main() {
         amount: 200,
         date: DateTime(2022, 2, 1),
         category: 'Entertainment',
+        name: '',
       ),
       TransactionModel(
         id: '3',
@@ -25,6 +27,7 @@ void main() {
         amount: 500,
         date: DateTime(2022, 3, 1),
         category: 'Salary',
+        name: '',
       ),
       TransactionModel(
         id: '4',
@@ -32,6 +35,7 @@ void main() {
         amount: 300,
         date: DateTime(2022, 4, 1),
         category: 'Investment',
+        name: '',
       ),
     ];
     final budgetCalculator = BudgetCalculator(transactions: transactions);

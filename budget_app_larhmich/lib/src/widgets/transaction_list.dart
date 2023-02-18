@@ -1,55 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction_model.dart';
+import '../transaction_db/transaction_admin.dart';
 
-class TransactionList extends StatelessWidget {
-  final List<TransactionModel> transactions;
+class TransactionScreen extends StatefulWidget {
+  const TransactionScreen({super.key});
 
-  TransactionList(this.transactions);
+  @override
+  State createState() => _TransactionScreenState();
+}
+
+class _TransactionScreenState extends State<TransactionScreen> {
+  final TransactionDBAdmin _transactionDBAdmin = TransactionDBAdmin();
+  final DateFormat _dateFormat = DateFormat.yMd();
+
+  List<TransactionModel> _transactions = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeDatabase();
+  }
+
+  void _initializeDatabase() async {
+    await _transactionDBAdmin.initDatabase();
+    _refreshTransactions();
+  }
+
+  void _refreshTransactions() async {
+    final transactions = await _transactionDBAdmin.getTransactionsFromDB();
+    setState(() {
+      _transactions = transactions;
+    });
+  }
+
+  void _addTransaction() async {
+    final now = DateTime.now();
+    final transaction = TransactionModel(
+      id: now.toIso8601String(),
+      name: 'New Transaction',
+      type: TransactionType.expense,
+      amount: 0,
+      date: now,
+      category: 'Other',
+    );
+    await _transactionDBAdmin.addToDB(transaction);
+    _refreshTransactions();
+  }
+
+  void _editTransaction(TransactionModel transaction) async {
+    final updatedTransaction = TransactionModel(
+      id: transaction.id,
+      name: transaction.name,
+      type: transaction.type,
+      amount: transaction.amount + 1,
+      date: transaction.date,
+      category: transaction.category,
+    );
+    await _transactionDBAdmin.editTransaction(updatedTransaction);
+    _refreshTransactions();
+  }
+
+  void _removeTransaction(String transactionId) async {
+    await _transactionDBAdmin.removeFromDB(transactionId);
+    _refreshTransactions();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400, // set the height of the list container
-      child: transactions.isEmpty
-          ? Column(
-              children: <Widget>[
-                Text(
-                  'No transactions added yet!',
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-              ],
-            )
-          : ListView.builder(
-              itemCount: transactions.length,
-              itemBuilder: (ctx, index) {
-                return Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 5,
-                  ),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Padding(
-                        padding: EdgeInsets.all(6),
-                        child: FittedBox(
-                          child: Text('\$${transactions[index].amount}'),
-                        ),
-                      ),
-                    ),
-                    title: Text(
-                      transactions[index].id,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    subtitle: Text(
-                      '${DateFormat.yMMMd().format(transactions[index].date)} - ${transactions[index].category}',
-                    ),
-                  ),
-                );
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Transactions'),
+      ),
+      body: ListView.builder(
+        itemCount: _transactions.length,
+        itemBuilder: (context, index) {
+          final transaction = _transactions[index];
+          return ListTile(
+            title: Text(transaction.name),
+            subtitle: Text(
+                '${_dateFormat.format(transaction.date)} - ${transaction.amount.toStringAsFixed(2)}'),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () => _removeTransaction(transaction.id),
             ),
+            onTap: () => _editTransaction(transaction),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addTransaction,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
